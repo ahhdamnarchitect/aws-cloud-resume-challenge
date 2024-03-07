@@ -1,4 +1,4 @@
-name: Upload website to S3
+name: Upload website to S3 and Invalidate CloudFront Cache
 
 on:
   push:
@@ -20,3 +20,13 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-east-1'
           SOURCE_DIR: 'html5up-dimension'
+
+      - name: CloudFront Invalidation
+        uses: einaregilsson/cloudfront-invalidate-action@v1
+        with:
+          distributionId: 'EF52U6XTHPA78'
+          paths: '/*'
+        env:
+          AWS_CLOUDFRONT_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_CLOUDFRONT_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-east-1'
