@@ -2,7 +2,7 @@ This is my attempt at cloud resume challenge in AWS. What is Cloud Resume Challe
 
 Architecture
 
-![Architecture Design](/architect.jpg)
+![Architecture Design](/Architect.jpg)
 
 Services Used:<br>
 
